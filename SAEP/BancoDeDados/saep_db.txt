@@ -1,0 +1,43 @@
+create database saep_db;
+use saep_db;
+
+drop database saep_db;
+
+create table professores (
+
+id int not null primary key auto_increment,
+email varchar(255) not null,
+password varchar(255) not null,
+updated_at datetime not null,
+created_at datetime not null,
+deleted_at datetime null
+
+
+);
+
+select * from professores;
+
+create table turmas (
+
+id int not null primary key auto_increment,
+idProfessores int not null,
+nome varchar(45) not null,
+foreign key (idProfessores) references professores(id),
+updated_at datetime not null,
+created_at datetime not null,
+deleted_at datetime null
+
+);
+
+create table atividades (
+
+id int not null primary key auto_increment,
+idTurmas int not null,
+nome varchar(45) not null,
+descricao varchar(255) not null,
+foreign key (idTurmas) references turmas(id),
+updated_at datetime not null,
+created_at datetime not null,
+deleted_at datetime null
+
+);
